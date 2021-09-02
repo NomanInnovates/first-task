@@ -1,0 +1,144 @@
+.loginpage{
+    min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.signupPage{
+    min-height: 80vh;
+    max-width:1008px ;
+    margin: 0 auto;
+    text-align: center;
+}
+.home{
+    display: flex;
+    flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+    text-align: center;
+}
+.loginBtn{
+    padding: 6px 12px;
+    width:250px;
+
+    display: block !important;
+    border-radius:20px !important;
+    margin: 20px auto 0 !important;
+}
+.forget{
+    font-size:12px;
+    color:#333}
+.forget2{
+    text-align: left;
+    padding-left: 30px;
+    font-size:12px;
+    color:#333}
+.Heading{
+    margin-top: 5%;
+    color:#333
+    }
+    .inputfields input{
+        min-width: 400px;
+        padding: 5px;
+
+    }
+
+    /* todo page */
+
+    body{
+        background: linear-gradient(#69E7CF,#497EE4);
+        height: 100vh;
+      }
+      button:hover{
+        cursor: pointer;
+      }
+      .App {
+        background: #fff;
+        padding: 10px 10px 20px 10px;
+        text-align: center;
+        max-width: 400px;
+        margin: 10% auto;
+        border-radius: 5px;
+        box-shadow: 0 0 10px 0px #0000001f;
+      }
+      .todo-list
+      {
+        padding: 0;
+        list-style: none;
+      }
+      .todo-list div{
+        background: #F2F2F2;
+        color: #272F3D;
+        margin: 10px;
+        border-radius: 5px;
+        justify-content: space-between;
+        display: flex;
+        
+      }
+      .todo-list div button{
+        background: #E44E3F;
+        color: #fff;
+        border: none;
+        width: 40px;
+        border-radius: 0 5px 5px 0;
+      }
+      .todo-list li {
+        padding: 10px;
+        display: inline;
+      }
+      .header input{
+      width: 82%;
+      height: 40px;
+      margin-right: 4px;
+      border-radius: 2px;
+          border: 1px solid #D5D5D5;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .header button{
+      width: 43px;
+      height: 43px;
+      background: #894CD3;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 30px;
+      }
+      .clearAll{
+        background: #fff !important;
+        align-items: center;
+      }
+      .clear-btn{
+        background: #894cd3 !important;
+          width: auto !important;
+          padding: 8px 15px;
+          border-radius: 5px !important;
+          height: fit-content;
+          font-size: 18px; ;
+      }
+
+      /* sign up */
+      .inputfields div{
+        margin-top: 20px;
+      }
+      .inputfields label{
+        min-width: 110px;
+        width: 110px;
+        /* padding: 20px; */
+        display: inline-block;
+    }
+    .inputfields{
+        text-align: left;
+        max-width: 600px;
+        margin: 0 auto;
+        color: #fff;
+    }
+    .logOut-btn{
+      position: absolute;
+      top: 10px;
+      right: 20px;
+    }

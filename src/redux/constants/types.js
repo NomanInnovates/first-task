@@ -1,3 +1,8 @@
 export const ADD_TODO = "ADD_TODO"
 export const DELETE_TODO = "DELETE_TODO"
 export const CLEAR_ALL = "CLEAR_ALL"
+export const FETCH_TODO = "FETCH_TODO"
+export const LOGOUT = "LOGOUT"
+export const SIGNIN = "SIGNIN"
+export const LOGIN = "LOGIN"
+export const ERROR_FETCH_TODOS = "ERROR_FETCH_TODOS"

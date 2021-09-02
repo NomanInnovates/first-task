@@ -1,31 +1,32 @@
-import { DELETE_TODO, ADD_TODO, CLEAR_ALL } from "../constants/types";
+import { DELETE_TODO, ADD_TODO, CLEAR_ALL, FETCH_TODO } from "../constants/types";
 
-let initialState = [
-  {
-    text: "Nomi",
-    completed: false,
-    uid: Date.now().toString(36) + Math.random().toString(36).substr(2),
-  },
-];
+let initialState = {
+  todos: []
+}
+
 
 function TodoReducer(state = initialState, action) {
   switch (action.type) {
-    case ADD_TODO:
-      return [
+    case FETCH_TODO:
+      return  {
         ...state,
-        {
-          text: action.payload,
-          completed: false,
-          uid: Date.now().toString(36) + Math.random().toString(36).substr(2),
-        },
-      ];
+        todos: action.payload
+      }
+      
+    case ADD_TODO:
+      return state;
+        // {
+        //   todo: action.payload,
+        //   completed: false,
+        //   uid: Date.now().toString(36) + Math.random().toString(36).substr(2),
+        // },
+
+      
     case DELETE_TODO:
-      let newState = state.filter((item) => {
-        return item.uid !== action.payload;
-      });
-      return newState;
+    console.log("id in reducer dell case",action.payload)
+      return state;
     case CLEAR_ALL:
-        console.log("Clear All in redu")
+      console.log("Clear All in redu")
       let empState = [];
       return empState;
 
