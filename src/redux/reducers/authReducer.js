@@ -10,17 +10,18 @@ export default function AuthReducer(state=initialState, action) {
         case SIGNIN:{
             return {
                 ...state,
-                isUserLoggedIn:true,
+                isUserLoggedIn:false,
                 user: action.payload
             }
         }
-        case LOGIN:{
+        case LOGIN:
+            console.log("Login in action",action.payload)
             return {
                 ...state,
                 isUserLoggedIn:true,
                 user: action.payload
             }
-        }
+        
         case LOGOUT:{
             return {
                 ...state,

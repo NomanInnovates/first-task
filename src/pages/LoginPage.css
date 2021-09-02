@@ -142,3 +142,15 @@
       top: 10px;
       right: 20px;
     }
+
+    @media(max-width:425px){
+      .inputfields input{
+        min-width: 300px;
+      }
+      .inputfields div{
+        margin-top: 5px;
+      }
+      .loginBtn{
+        margin: 10px auto 0 !important;
+      }
+    }

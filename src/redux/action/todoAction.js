@@ -1,24 +1,20 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
 import {
-  DELETE_TODO,
-  CLEAR_ALL,
   ADD_TODO,
   FETCH_TODO,
   ERROR_FETCH_TODOS,
 } from "../constants/types";
 import { db } from "../../configs/firebase";
 
-export const getTodos = () => async (dispatch) => {
+export const getTodos = (userId) => async (dispatch) => {
   try {
-    console.log("try");
     
-    db.collection("todo").onSnapshot((querySnapshot) => {
+    db.collection("todo").where("userId", '==', userId).onSnapshot((querySnapshot) => {
        let fetchTodo = [];
       querySnapshot.forEach((doc) => {
         fetchTodo.push({ ...doc.data(), uid: doc.id });
       });
 
-      console.log("fetched todo",fetchTodo)
       dispatch({
         type: FETCH_TODO,
         payload: fetchTodo,
@@ -37,11 +33,12 @@ export const getTodos = () => async (dispatch) => {
 export const deletedataRedux = (id) => async () => {
   db.collection("todo").doc(id).delete();
 }
-export const dataFrom = (data) => async (dispatch) => {
-  console.log("data in action=>", data);
+export const dataFrom = (data , userId) => async (dispatch) => {
+  console.log("data in action=>", data , userId);
   try {
     await db.collection("todo").add({
       todo: data,
+      userId: userId,
       timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
 

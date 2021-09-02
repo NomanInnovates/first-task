@@ -6,26 +6,27 @@ import { deletedataRedux } from '../redux/action/todoAction'
 
 function List() {
   const { todos } = useSelector((state) => state.TodoReducer);
-  console.log("todo form redux in todolist", todos);
+  
+  const userId = useSelector(state => state.AuthReducer.user.uid);
+  // const user = useSelector((state) => state);
+  // console.log()
   const deleteHandler = (id) => {
     dispatch(deletedataRedux(id))
     // console.log("id in foo", id);
   };
   useEffect(() => {
-    dispatch(getTodos());
+    dispatch(getTodos(userId));
   }, []);
   const dispatch = useDispatch();
   const clearAllHandler = (todos) => {
     dispatch(cleardataRedux(todos));
   };
-  console.log("get todo>", todos);
+  // console.log("get todo>", todos);
   return (
     <div className="todo-container">
       <ul className="todo-list">
-{console.log("in return",todos)}
        
         {todos.map((item, i) => {
-          console.log("single todo", item.todo);
           return <div className="todo" key={i}>
               <li className="todo-item"> {item.todo} </li>
               <button

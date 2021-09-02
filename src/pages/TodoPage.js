@@ -9,6 +9,7 @@ function TodoPage() {
     console.log("logout run");
     dispatch(doLogout())
   }
+
   return (
     <div className="App">
       <button className="logOut-btn" onClick={handleLogout}>Log out</button>

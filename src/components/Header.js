@@ -1,8 +1,11 @@
 import React ,{useState} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { dataFrom } from '../redux/action/todoAction';
 
 const Header = () => {
+
+    const userId = useSelector(state => state.AuthReducer.user.uid);
+    console.log("check user in header" ,userId)
     const [inputText, setInputText] = useState('');
     const dispatch = useDispatch();
     const inputHandler = e => {
@@ -10,10 +13,10 @@ const Header = () => {
       };
     const submitHandler = e => {
         e.preventDefault();
-        console.log("input value=>",inputText)
+        console.log("data in submit",userId)
         if (inputText !== "" && inputText.length >= 3) {
             setInputText('')   
-            dispatch(dataFrom(inputText))
+            dispatch(dataFrom(inputText , userId))
         }
       
         

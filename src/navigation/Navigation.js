@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Switch } from 'react-router-dom'
 import { useSelector } from "react-redux"
 import PublicRoute from './PublicRoute'
 import PrivateRoute from './PrivateRoute'

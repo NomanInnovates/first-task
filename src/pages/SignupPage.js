@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import './LoginPage.css'
 function SignupPage () {
     const dispatch = useDispatch()
-    const [userData, setUserData] = useState({})
+    // const [userData, setUserData] = useState({})
     const [email, setemail] = useState('')
     const [password, setPassword] = useState('')
     const [phone, setPhone] = useState('')
@@ -16,7 +16,7 @@ function SignupPage () {
     const handleFormData = (e) => {
         e.preventDefault();
         let newUserData = { email,phone,password,confirmPass }
-        setUserData((d)=>{ return {...d, ...newUserData} })
+        // setUserData((d)=>{ return {...d, ...newUserData} })
         console.log("final obj", newUserData)
         addUser(newUserData)
         
@@ -72,6 +72,7 @@ function SignupPage () {
               <Link to='/'>Already Have an account?</Link>
             </p>
           </div>
+          <br />
             <button onClick={handleFormData} className='loginBtn'  >Create Account</button>
         </div>
       </form>
