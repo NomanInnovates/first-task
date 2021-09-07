@@ -9,7 +9,6 @@ import LoginPage from '../pages/LoginPage'
 import SignupPage from '../pages/SignupPage'
 function Navigation() {
     const isLogin = useSelector(store => store.AuthReducer.isUserLoggedIn)
-    console.log("islogin in nav",isLogin)
     return (
         <Router>
             <Switch>

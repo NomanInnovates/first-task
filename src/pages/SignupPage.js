@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { createUser } from '../redux/action/authAction'
 import { Link } from 'react-router-dom'
+import { getTodos } from "../redux/action/todoAction";
 
 import './LoginPage.css'
 function SignupPage () {
@@ -11,13 +12,14 @@ function SignupPage () {
     const [password, setPassword] = useState('')
     const [phone, setPhone] = useState('')
     const [confirmPass, setConfirmPass] = useState('')
-    console.log(email ,password)
-    
+    const testTodo = () => {
+
+      dispatch(getTodos('51TmHDWZAXcWXkbTyyAlJwxghh92'));
+    }
     const handleFormData = (e) => {
         e.preventDefault();
         let newUserData = { email,phone,password,confirmPass }
         // setUserData((d)=>{ return {...d, ...newUserData} })
-        console.log("final obj", newUserData)
         addUser(newUserData)
         
     }
@@ -29,6 +31,7 @@ function SignupPage () {
   return (
     <div className='signupPage'>
       <h2 className='Heading'>Sign in</h2>
+      
       <form>
         <div className="inputfields">
           <div>
@@ -77,6 +80,7 @@ function SignupPage () {
         </div>
       </form>
             {/* <br/> */}
+            <button onClick={testTodo} className='loginBtn'  >Load Todo</button>
     </div>
   )
 }

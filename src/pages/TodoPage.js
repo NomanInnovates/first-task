@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 function TodoPage() {
   const dispatch = useDispatch()
   const handleLogout = () => {
-    console.log("logout run");
     dispatch(doLogout())
   }
 

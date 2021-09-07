@@ -154,3 +154,12 @@
         margin: 10px auto 0 !important;
       }
     }
+
+    .download-btn{
+      border-radius:2px !important;
+      width:45px !important
+     ;height:40px !important 
+    }
+    i{
+      color: #fff;
+    }

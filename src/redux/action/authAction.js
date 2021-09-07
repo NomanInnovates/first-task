@@ -1,5 +1,5 @@
 import { auth, db } from "../../configs/firebase";
-import { LOGIN, SIGNIN , LOGOUT} from "../constants/types";
+import { LOGIN, SIGNIN ,CHECKUSER, LOGOUT} from "../constants/types";
 
 export const createUser = (data) => async (dispatch) => {
   try {
@@ -19,7 +19,7 @@ export const createUser = (data) => async (dispatch) => {
     });
   } catch (error) {
     
-    alert(error);
+    alert(error.message);
     console.log("error", error);
   }
 };
@@ -31,7 +31,6 @@ export const doLogin = (data) => async (dispatch) => {
       data.email,
       data.password
     );
-    console.log("user", user.user.uid);
     dispatch({
       type: LOGIN,
       payload: user.user,
@@ -43,7 +42,6 @@ export const doLogin = (data) => async (dispatch) => {
 };
 
 export const doLogout = () => (dispatch) => {
-  console.log("logout in actuin");
   try {
     // firebase logOut
     const res = auth.signOut();
@@ -56,3 +54,17 @@ export const doLogout = () => (dispatch) => {
     console.log("error", error);
   }
 };
+
+export const checkUser = (user) => async (dispatch) =>  {
+
+try{
+  dispatch({
+    type: CHECKUSER,
+    payload:user
+  })
+}
+catch(error) {
+alert(error.message)
+}
+
+}

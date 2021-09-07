@@ -9,9 +9,10 @@ import { db } from "../../configs/firebase";
 export const getTodos = (userId) => async (dispatch) => {
   try {
     
-    db.collection("todo").where("userId", '==', userId).onSnapshot((querySnapshot) => {
+    db.collection("todo").orderBy("timeStamp").where("userId", '==', userId)
+    .onSnapshot((querySnapshot) => {
        let fetchTodo = [];
-      querySnapshot.forEach((doc) => {
+      querySnapshot.forEach((doc ) => {
         fetchTodo.push({ ...doc.data(), uid: doc.id });
       });
 
@@ -33,11 +34,12 @@ export const getTodos = (userId) => async (dispatch) => {
 export const deletedataRedux = (id) => async () => {
   db.collection("todo").doc(id).delete();
 }
-export const dataFrom = (data , userId) => async (dispatch) => {
-  console.log("data in action=>", data , userId);
+export const dataFrom = (data ,dueDate, userId) => async (dispatch) => {
+  console.log("data in action=>", data ,dueDate, userId);
   try {
     await db.collection("todo").add({
       todo: data,
+      dueDate:dueDate,
       userId: userId,
       timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
@@ -54,12 +56,7 @@ export const dataFrom = (data , userId) => async (dispatch) => {
 
 export const cleardataRedux = (todos) => async (dispatch) => {
   for(let i = 0 ; i < todos.length ; i ++){
-    // console.log(todos[i].uid)
     db.collection("todo").doc(todos[i].uid).delete();
   }
-  // db.collection("todo").delete()
-  // dispatch({
-  //   type: CLEAR_ALL,
-  //   payload: "",
-  // });
+
 };

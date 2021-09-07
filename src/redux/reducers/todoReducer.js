@@ -15,12 +15,6 @@ function TodoReducer(state = initialState, action) {
       
     case ADD_TODO:
       return state;
-        // {
-        //   todo: action.payload,
-        //   completed: false,
-        //   uid: Date.now().toString(36) + Math.random().toString(36).substr(2),
-        // },
-
       
     case DELETE_TODO:
     console.log("id in reducer dell case",action.payload)

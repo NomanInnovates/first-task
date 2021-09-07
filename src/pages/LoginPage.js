@@ -1,17 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { doLogin } from "../redux/action/authAction";
+import { checkUser, doLogin } from "../redux/action/authAction";
 import "./LoginPage.css";
-// import { Link } from 'react-router-dom'
+import { auth } from "../configs/firebase";
+
 
 function LoginPage() {
+  useEffect(() => {
+    // const auth = getAuth();
+    async function  check() {
+       auth.onAuthStateChanged((someUser) => {
+        if (someUser) {
+          dispatch(checkUser(someUser))
+        } else {
+          console.log("User not found");
+        }
+      });
+    }
+    check();
+  }, []);
+
   const dispatch = useDispatch();
   const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
+
   const handleFormData = (e) => {
     e.preventDefault();
     let newUserData = { email, password };
-    console.log("final obj", newUserData);
     dispatch(doLogin(newUserData));
   };
   return (
