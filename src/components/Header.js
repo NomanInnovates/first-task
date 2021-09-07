@@ -7,7 +7,7 @@ const Header = () => {
     const userId = useSelector(state => state.AuthReducer.user.uid);
     // console.log("check user in header" ,userId)
     const [inputText, setInputText] = useState('');
-    const [dueDate , setDueDate] = useState();
+    const [dueDate , setDueDate] = useState(new Date());
     const inputDateHandler = (e) => {
         setDueDate(e.target.value)
         // setDueDate(e.target.value)
@@ -32,8 +32,8 @@ const Header = () => {
         <form>
             <div className="header">
             <input type='text' value={inputText} placeholder=" Add your new todo" onChange={inputHandler} className='todo_input' />
-            <input type="date" id="start" name="trip-start"
-       value={new Date()}
+            <input type="datetime-local" id="start" name="trip-start"
+       value={dueDate}
        min={new Date()} onChange={inputDateHandler}  />
 
 

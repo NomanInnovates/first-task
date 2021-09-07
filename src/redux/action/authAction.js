@@ -1,5 +1,5 @@
 import { auth, db } from "../../configs/firebase";
-import { LOGIN, SIGNIN ,CHECKUSER, LOGOUT} from "../constants/types";
+import { LOGIN, SIGNIN, CHECKUSER, LOGOUT } from "../constants/types";
 
 export const createUser = (data) => async (dispatch) => {
   try {
@@ -18,7 +18,6 @@ export const createUser = (data) => async (dispatch) => {
       payload: user,
     });
   } catch (error) {
-    
     alert(error.message);
     console.log("error", error);
   }
@@ -55,16 +54,13 @@ export const doLogout = () => (dispatch) => {
   }
 };
 
-export const checkUser = (user) => async (dispatch) =>  {
-
-try{
-  dispatch({
-    type: CHECKUSER,
-    payload:user
-  })
-}
-catch(error) {
-alert(error.message)
-}
-
-}
+export const checkUser = (user) => async (dispatch) => {
+  try {
+    dispatch({
+      type: CHECKUSER,
+      payload: user,
+    });
+  } catch (error) {
+    alert(error.message);
+  }
+};

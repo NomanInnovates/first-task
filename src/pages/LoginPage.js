@@ -4,23 +4,22 @@ import { checkUser, doLogin } from "../redux/action/authAction";
 import "./LoginPage.css";
 import { auth } from "../configs/firebase";
 
-
 function LoginPage() {
+	const dispatch = useDispatch();
   useEffect(() => {
     // const auth = getAuth();
-    async function  check() {
-       auth.onAuthStateChanged((someUser) => {
+    async function check() {
+      auth.onAuthStateChanged((someUser) => {
         if (someUser) {
-          dispatch(checkUser(someUser))
+          dispatch(checkUser(someUser));
         } else {
           console.log("User not found");
         }
       });
     }
     check();
-  }, []);
+  }, [dispatch]);
 
-  const dispatch = useDispatch();
   const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
 

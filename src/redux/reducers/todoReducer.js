@@ -1,26 +1,28 @@
-import { DELETE_TODO, ADD_TODO, CLEAR_ALL, FETCH_TODO } from "../constants/types";
+import {
+  DELETE_TODO,
+  ADD_TODO,
+  CLEAR_ALL,
+  FETCH_TODO,
+} from "../constants/types";
 
 let initialState = {
-  todos: []
-}
-
+  todos: [],
+};
 
 function TodoReducer(state = initialState, action) {
   switch (action.type) {
     case FETCH_TODO:
-      return  {
+      return {
         ...state,
-        todos: action.payload
-      }
-      
+        todos: action.payload,
+      };
+
     case ADD_TODO:
       return state;
-      
+
     case DELETE_TODO:
-    console.log("id in reducer dell case",action.payload)
       return state;
     case CLEAR_ALL:
-      console.log("Clear All in redu")
       let empState = [];
       return empState;
 

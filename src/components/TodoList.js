@@ -24,33 +24,42 @@ function List() {
       key: "userId",
     },
   ];
-  const csvReport = {
-    filename:"Report.csv",
-    header:header,
-    data : todos
-  }
+  const dispatch = useDispatch();
   const userId = useSelector((state) => state.AuthReducer.user.uid);
   const deleteHandler = (id) => {
     dispatch(deletedataRedux(id));
   };
   useEffect(() => {
     dispatch(getTodos(userId));
-  }, []);
-  const dispatch = useDispatch();
+  }, [dispatch, userId]);
   const clearAllHandler = (todos) => {
     dispatch(cleardataRedux(todos));
   };
- 
+  // todos
+  const exportTodo =  todos.map((itm) => {
+        return {
+          timeStamp: itm?.timeStamp?.seconds ? new Date(itm.timeStamp.seconds * 1000) : "",
+          dueDate: itm.dueDate,
+          todo: itm.todo,
+        };
+      })
+  ;
+
+  console.log(todos, "new", exportTodo);
+  const csvReport = {
+    filename: "Report.csv",
+    header: header,
+    data: exportTodo,
+  };
   return (
     <div className="todo-container">
       <ul className="todo-list">
         {todos.map((item, i) => {
-         
           return (
             <div
               style={
-                new Date (item.dueDate) <
-                new Date() ? { background: "#ca564b", color: "#e5e7ea" }
+                new Date(item.dueDate) < new Date()
+                  ? { background: "#ca564b", color: "#e5e7ea" }
                   : null
               }
               className="todo"
@@ -71,9 +80,12 @@ function List() {
           <button className="clear-btn" onClick={() => clearAllHandler(todos)}>
             Clear All
           </button>
-          <br/>
-          <button title="Download to CSV" className="download-btn"><CSVLink {...csvReport} ><i className="fas fa-download"></i></CSVLink></button>
-          
+          <br />
+          <button title="Download to CSV" className="download-btn">
+            <CSVLink {...csvReport}>
+              <i className="fas fa-download"></i>
+            </CSVLink>
+          </button>
         </div>
       </ul>
     </div>
