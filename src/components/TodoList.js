@@ -4,8 +4,32 @@ import { cleardataRedux } from "../redux/action/todoAction";
 import { getTodos } from "../redux/action/todoAction";
 import { deletedataRedux } from "../redux/action/todoAction";
 import { CSVLink } from "react-csv";
+import ReactExport from "react-data-export";
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+
 function List() {
   const { todos } = useSelector((state) => state.TodoReducer);
+
+  const DataSet = [
+    {
+      columns: [
+        { title: "Todo" },
+        { title: "Due Date" },
+        { title: "Time Stamp" },
+      ],
+      data: todos.map((item) => [
+        { value: item.todo },
+        { value:  item.dueDate.toString() },
+        {
+          value: item.timeStamp?.seconds
+            ? new Date(item.timeStamp.seconds * 1000).toString().slice(0,21)
+            : "",
+        },
+      ]),
+    },
+  ];
   const header = [
     {
       label: "Todo",
@@ -36,21 +60,22 @@ function List() {
     dispatch(cleardataRedux(todos));
   };
   // todos
-  const exportTodo =  todos.map((itm) => {
-        return {
-          timeStamp: itm?.timeStamp?.seconds ? new Date(itm.timeStamp.seconds * 1000) : "",
-          dueDate: itm.dueDate,
-          todo: itm.todo,
-        };
-      })
-  ;
-
-  console.log(todos, "new", exportTodo);
+  const exportTodo = todos.map((itm) => {
+    return {
+      timeStamp: itm?.timeStamp?.seconds
+        ? new Date(itm.timeStamp.seconds * 1000)
+        : "",
+      dueDate: itm.dueDate,
+      todo: itm.todo,
+    };
+  });
   const csvReport = {
     filename: "Report.csv",
     header: header,
     data: exportTodo,
   };
+
+  console.log(DataSet);
   return (
     <div className="todo-container">
       <ul className="todo-list">
@@ -81,6 +106,12 @@ function List() {
             Clear All
           </button>
           <br />
+          <ExcelFile
+            filename="report"
+            element={<button className="xlsx-btn" type="button">xlsx</button>}
+          >
+            <ExcelSheet dataSet={DataSet} name="todo report" />
+          </ExcelFile>
           <button title="Download to CSV" className="download-btn">
             <CSVLink {...csvReport}>
               <i className="fas fa-download"></i>
