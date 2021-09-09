@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { checkUser, doLogin } from "../redux/action/authAction";
 import "./LoginPage.css";
 import { auth } from "../configs/firebase";
+import { Link } from "react-router-dom";
+
 
 function LoginPage() {
 	const dispatch = useDispatch();
@@ -35,32 +37,36 @@ function LoginPage() {
       <form>
         <div className="inputfields">
           <div>
-            <label>Email</label>
-
+            
             <input
-              type="text"
+              type="email"
+              name="email"
               placeholder="Email"
               onChange={(e) => setemail(e.target.value)}
             />
           </div>
-          <br></br>
           <div>
-            <label>Password</label>
+          
 
             <input
               type="password"
               onChange={(e) => setPassword(e.target.value)}
               placeholder="password"
             />
-            <br></br>
           </div>
-          <p className="forget">
-            <a href="/signup">forget password?</a>
-          </p>
-          <br></br>
+          <div class="hint"><div class=""><u>User Login Details</u></div><div class="row"><div class="col-12">Email: noman.i@yahoo.com</div><div class="col-12">Password: 12345678</div></div></div>
           <button onClick={handleFormData} className="loginBtn">
-            <a href="/todos">Login</a>
-          </button>
+            <Link to="/todos">Login</Link>
+       </button>
+            <span className="additional-links">
+          <p className="forget">
+            <Link to="/signup">Create Account</Link>
+          </p>
+          <p className="forget">
+            <Link to="/forget">forget password?</Link>
+          </p>
+          </span>
+          <br></br>
         </div>
       </form>
     </div>

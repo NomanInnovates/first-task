@@ -1,14 +1,12 @@
-.loginpage {
-  min-height: 80vh;
+.loginpage ,.signupPage{
+  /* min-height: 70vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.signupPage {
-  min-height: 80vh;
-  max-width: 1008px;
-  margin: 0 auto;
-  text-align: center;
+  background: #fff;
+    padding: 1rem;
+    border-radius: 5px;
+    
 }
 .home {
   display: flex;
@@ -18,33 +16,52 @@
   justify-content: center;
   text-align: center;
 }
+.loginBtn a{
+text-decoration: none;
+color: white;
+}
+.hint div{
+  margin-top: 5px;
+}
 .loginBtn {
+  color: white;
+  border:none;
+  background: #4c86e3;
   padding: 6px 12px;
-  width: 250px;
-
+  width: 100%;
+  font-weight: 800;
   display: block !important;
-  border-radius: 20px !important;
+  border-radius: 5px !important;
   margin: 20px auto 0 !important;
 }
-.forget {
-  font-size: 12px;
+.loginBtn:hover{
+  background: #255db8;
+  
+}
+.additional-links{
+  display: flex;
+  justify-content: space-between;
+}
+.forget2 a,.forget a {
+  /* font-size: 12px; */
   color: #333;
 }
-.forget2 {
-  text-align: left;
-  padding-left: 30px;
-  font-size: 12px;
-  color: #333;
-}
+
 .Heading {
   margin-top: 5%;
-  color: #333;
+  color: #555;
 }
 .inputfields input {
   min-width: 400px;
   padding: 5px;
+  font-size: 20px
 }
-
+.hint{
+  color: #333;
+    background: #eee;
+    text-align: center;
+    padding: 5px 5px 15px;
+}
 /* todo page */
 
 body {
@@ -56,7 +73,7 @@ button:hover {
 }
 .App {
   background: #fff;
-  padding: 10px 10px 20px 10px;
+  padding: 10px 20px 20px 20px;
   text-align: center;
   max-width: 400px;
   border-radius: 5px;
@@ -69,7 +86,7 @@ button:hover {
 .todo-list div {
   background: #f2f2f2;
   color: #272f3d;
-  margin: 10px;
+  margin: 10px 0;
   border-radius: 5px;
   justify-content: space-between;
   display: flex;
@@ -85,10 +102,17 @@ button:hover {
   padding: 10px;
   display: inline;
 }
+.clearAll li{
+  padding: 10px 0px !important;
+}
+.header input[type="datetime-local"] {
+padding: 0 2px;
+}
 .header input {
-  width: 82%;
+  width: 97%;
   height: 40px;
   margin-right: 4px;
+  margin-bottom: 4px;
   border-radius: 2px;
   border: 1px solid #d5d5d5;
 }
@@ -105,23 +129,24 @@ button:hover {
   border: none;
   border-radius: 4px;
   font-size: 30px;
+  margin: 0 0 0 20px;
 }
 .clearAll {
   background: #fff !important;
   align-items: center;
 }
 .clear-btn {
-  background: #894cd3 !important;
   width: auto !important;
-  padding: 8px 15px;
+  padding: 10px 20px;
   border-radius: 5px !important;
   height: fit-content;
   font-size: 18px;
+  margin-left:auto
 }
 
 /* sign up */
-.inputfields div {
-  margin-top: 20px;
+.inputfields > div {
+  margin-top: 28px;
 }
 .inputfields label {
   min-width: 110px;
@@ -139,14 +164,20 @@ button:hover {
   position: absolute;
   top: 10px;
   right: 20px;
+  background: #894cd3;
+  border: none;
+  padding: 8px 12px;
+  color: #fff;
+  border-radius: 2px;
+  font-weight: 700;
 }
 
 @media (max-width: 425px) {
   .inputfields input {
     min-width: 300px;
   }
-  .inputfields div {
-    margin-top: 5px;
+  .inputfields > div {
+    margin-top: 15px;
   }
   .loginBtn {
     margin: 10px auto 0 !important;
@@ -155,10 +186,24 @@ button:hover {
 
 .download-btn,.xlsx-btn {
   border-radius: 2px !important;
-  width: 45px !important  ;
+  width: auto !important  ;
+  padding: 0 15px;
   height: 40px !important ;
   background: #519ade !important;
+  margin: 0 2px;
+}
+.download-btn a {
+  text-decoration: none;
+  color: #fff;
+}
+.export-div{
+  background: none  !important;
 }
 i {
   color: #fff;
 }
+
+@media (max-width: 355px) {
+  .inputfields input {
+    min-width: 270px;
+  }}

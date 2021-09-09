@@ -106,15 +106,17 @@ function List() {
             Clear All
           </button>
           <br />
-          <ExcelFile
+         
+        </div>
+        <div className="export-div">
+        <ExcelFile
             filename="report"
-            element={<button className="xlsx-btn" type="button">xlsx</button>}
+            element={<button className="xlsx-btn" type="button" title= " download to xlsx">Download as xlsx &nbsp; <i className="fas fa-download"></i></button>}
           >
             <ExcelSheet dataSet={DataSet} name="todo report" />
           </ExcelFile>
           <button title="Download to CSV" className="download-btn">
-            <CSVLink {...csvReport}>
-              <i className="fas fa-download"></i>
+            <CSVLink {...csvReport}> Download as CSV &nbsp; <i className="fas fa-download"></i>
             </CSVLink>
           </button>
         </div>
