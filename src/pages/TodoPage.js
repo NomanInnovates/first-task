@@ -18,6 +18,7 @@ function TodoPage() {
         <h1> Todo App </h1>
       </header>
       <Header />
+      <hr/>
       <TodoList />
     </div>
   );

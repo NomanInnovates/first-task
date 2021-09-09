@@ -7,6 +7,7 @@ import PrivateRoute from './PrivateRoute'
 import TodoPage from '../pages/TodoPage'
 import LoginPage from '../pages/LoginPage'
 import SignupPage from '../pages/SignupPage'
+import Forget from '../pages/Forget'
 function Navigation() {
     const isLogin = useSelector(store => store.AuthReducer.isUserLoggedIn)
     return (
@@ -14,6 +15,10 @@ function Navigation() {
             <Switch>
                 <PublicRoute isLogin={isLogin}  path="/" exact>
                     <LoginPage />
+                </PublicRoute>
+                
+                <PublicRoute isLogin={isLogin}  path="/forget" >
+                    <Forget />
                 </PublicRoute>
         
                 <PublicRoute isLogin={isLogin}  path="/signup"  >

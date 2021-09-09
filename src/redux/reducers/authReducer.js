@@ -10,7 +10,7 @@ export default function AuthReducer(state=initialState, action) {
         case SIGNIN:{
             return {
                 ...state,
-                isUserLoggedIn:false,
+                isUserLoggedIn:true,
                 user: action.payload
             }
         }

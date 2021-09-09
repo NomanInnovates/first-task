@@ -31,15 +31,18 @@ const Header = () => {
     return(
         <form>
             <div className="header">
+                <div className="inputxx">
             <input type='text' value={inputText} placeholder=" Add your new todo" onChange={inputHandler} className='todo_input' />
             <input type="datetime-local" id="start" name="trip-start"
        value={dueDate}
        min={new Date()} onChange={inputDateHandler}  />
 
-
+</div>
+<div>
             <button onClick={submitHandler} className='todo_button' type="submit">
                 +
             </button>
+            </div>
         </div>
         
         </form>
